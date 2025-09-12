@@ -134,4 +134,35 @@ body {
     transform: rotate(10deg) scale(1.05);
 }
 
+/* Dropdowns */
+.prompt-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.select-wrapper {
+    flex: 1 1 200px;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    transition: 0.3s;
+}
+
+.custom-select:hover,
+.custom-select:focus {
+    border-color: #ff6bcb;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255,107,203,0.4);
+}
+
 
