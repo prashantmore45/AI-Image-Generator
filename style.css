@@ -243,3 +243,40 @@ body {
   transition: opacity 0.3s ease;
 }
 
+/* ===========================
+   IMAGE LAYOUT (Overlay actions)
+=========================== */
+.img-layout {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.img-box:hover .img-layout {
+  opacity: 1;
+}
+
+.img-download-btn {
+  background: linear-gradient(135deg, #4cafef, #2196f3);
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.img-download-btn:hover {
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  transform: scale(1.1);
+}
+
