@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-theme">
     <div class="container">
         <header class="header">
             <div class="logo-wrapper">
@@ -67,7 +67,12 @@
                 </div>
 
                 <div class="gallery-grid">
-                    <div class="img-box">
+                    <div class="img-box loading error">
+                        <div class="status-container">
+                            <div class="spinner"></div>
+                            <i class="fa-solid fatriangle-exclamation"></i>
+                            <p>Generating...</p>
+                        </div>
                         <img src="test.png" class="result-img">
                         <div class="img-layout">
                             <button class="img-download-btn">
