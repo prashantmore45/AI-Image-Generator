@@ -20,6 +20,113 @@ body {
     align-items: flex-start;
 }
 
+/* ===========================
+   DARK THEME - Global
+=========================== */
+body.dark-theme {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  color: #f0f0f0;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Header */
+body.dark-theme header {
+  background: rgba(20, 20, 20, 0.8);
+  border-bottom: 1px solid #444;
+}
+
+/* ===========================
+   INPUTS & TEXTAREAS
+=========================== */
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 10px;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme input:focus,
+body.dark-theme textarea:focus,
+body.dark-theme select:focus {
+  border: 1px solid #00bcd4;
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.6);
+  outline: none;
+}
+
+/* Placeholder color */
+body.dark-theme ::placeholder {
+  color: #aaa;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+body.dark-theme button,
+body.dark-theme .img-download-btn {
+  background: linear-gradient(135deg, #444, #222);
+  color: #f0f0f0;
+  border: 1px solid #666;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+body.dark-theme button:hover,
+body.dark-theme .img-download-btn:hover {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ===========================
+   GALLERY GRID
+=========================== */
+body.dark-theme .img-box {
+  background: linear-gradient(135deg, #1c1c1c, #2b2b2b);
+  border: 1px solid #444;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-theme .img-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 188, 212, 0.3);
+}
+
+body.dark-theme .img-layout {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+body.dark-theme .status-container {
+  background: rgba(0, 0, 0, 0.85);
+  color: #eee;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+/* Generating State */
+body.dark-theme .img-box.loading .status-container p {
+  color: #90caf9;
+}
+
+/* Error State */
+body.dark-theme .img-box.error .status-container {
+  background: rgba(183, 28, 28, 0.9);
+  color: #ffcdd2;
+}
+
+
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -293,4 +400,5 @@ body {
   background: linear-gradient(135deg, #1976d2, #0d47a1);
   transform: scale(1.1);
 }
+
 
