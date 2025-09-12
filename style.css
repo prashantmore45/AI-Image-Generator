@@ -401,4 +401,23 @@ body.dark-theme .img-box.error .status-container {
   transform: scale(1.1);
 }
 
+/* Hide everything by default */
+.status-container .spinner,
+.status-container .fa-triangle-exclamation,
+.status-container p {
+  display: none;
+}
+
+/* Show spinner + text when loading */
+.img-box.loading .spinner,
+.img-box.loading p {
+  display: block;
+}
+
+/* Show error icon + text when error */
+.img-box.error .fa-triangle-exclamation,
+.img-box.error p {
+  display: block;
+}
+
 
