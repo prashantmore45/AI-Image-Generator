@@ -209,3 +209,37 @@ body {
     }
 }
 
+/* ===========================
+   GALLERY GRID BASE
+=========================== */
+.gallery-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.img-box {
+  position: relative;
+  background: linear-gradient(135deg, #e3f2fd, #e1bee7);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.img-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.result-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
