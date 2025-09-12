@@ -2,13 +2,13 @@ const themeToggle = document.querySelector(".theme-Toggle");
 promptForm = document.querySelector(".prompt-from");
 const promptInput = document.querySelector(".prompt-input");
 const promptBtn = document.querySelector(".prompt-btn");
+const generateBtn = document.querySelector(".generate-btn");
 const modelSelect = document.getElementById("model-select");
 const countSelect = document.getElementById("count-select");
 const ratioSelect = document.getElementById("ratio-select");
 const gridGallery = document.querySelector(".gallery-grid");
 
 const API_KEY = "";
-
 
 const examplePrompts = [
     "A futuristic cyberpunk city glowing in neon lights with flying cars in the sky, cinematic view",
@@ -55,10 +55,26 @@ const getImageDimensions = (aspectRatio, baseSize = 512) => {
     return {width: calculateWidth, height: calculateHeight};
 };
 
+// Replace loading spinner with the actual image
+const updateImageBox = (imgIndex, imgUrl) => {
+    const imgBox = document.getElementById(`img-box-${imgIndex}`);
+    if (!imgBox) return;
+
+    imgBox.classList.remove("loading");
+    imgBox.innerHTML = `<img src="${imgUrl}" class="result-img">
+        <div class="img-layout">
+            <a href="${imgUrl}" class="img-download-btn" download="${Date.now()}.png">
+                <i class="fa-solid fa-download"></i>
+            </a>
+        </div>
+    `;
+}
+
 // Send requests to Hugging Face API to create images
 const generateImages = async (selectModel, imageCount, aspectRatio, promptText) => {
     const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectModel}`;
     const {width, height} = getImageDimensions(aspectRatio);
+    generateBtn.setAttribute("disabled", "true");
 
     // Create an array of image generation promises
     const imagePromises = Array.from({length: imageCount}, async(_, i) => {
@@ -81,14 +97,20 @@ const generateImages = async (selectModel, imageCount, aspectRatio, promptText) 
 
             if (!response.ok) throw new Error((await response.json())?.error);
 
+            // Convert response to an URL and update the image box
             const result = await response.blob();
-            console.log(result);
+            updateImageBox(i, URL.createObjectURL(result));
         } catch (error) {
         console.log(error);
+        const imgBox = document.getElementById(`img-box-${i}`);
+        imgBox.classList.remove("loading", "error");
+        imgBox.querySelector(".status-text").textContent = "Generation failed! Check console for more details."
         }
     })
 
     await Promise.allSettled(imagePromises);
+    generateBtn.removeAttribute("disabled");
+
 };
 
 const createImageBoxes = (selectModel, imageCount, aspectRatio, promptText) => {
@@ -101,12 +123,6 @@ const createImageBoxes = (selectModel, imageCount, aspectRatio, promptText) => {
                 <div class="spinner"></div>
                 <i class="fa-solid fa-triangle-exclamation"></i>
                 <p>Generating...</p>
-            </div>
-            <img src="test.png" class="result-img">
-            <div class="img-layout">
-                <button class="img-download-btn">
-                    <i class="fa-solid fa-download"></i>
-                </button>
             </div>
         </div>`;
     }

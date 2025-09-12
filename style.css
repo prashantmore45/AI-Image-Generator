@@ -287,6 +287,11 @@ body.dark-theme .img-box.error .status-container {
     background: linear-gradient(135deg, #2575fc, #6a11cb);
 }
 
+.generate-btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .prompt-container {
