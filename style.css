@@ -31,3 +31,56 @@ body {
     max-width: 1000px;
     margin-top: 30px;
 }
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 2.2rem;
+    color: #ff6bcb;
+    text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff6b6b, #ffcc70);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.theme-Toggle {
+    background: #fff;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.theme-Toggle:hover {
+    background: #ff6bcb;
+    color: #fff;
+}
+
