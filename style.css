@@ -317,23 +317,118 @@ body.dark-theme .img-box.error .status-container {
 .gallery-grid {
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
 /* 2 per row on tablets */
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
+} */
 
-/* 1 per row on mobiles */
-@media (max-width: 576px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 992px) {
+  .prompt-from {
+    padding: 20px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  .prompt-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px; /* NEW: reduce space between selects/buttons */
+  }
+
+  .custom-select {
+    width: 100%; /* take full width instead of uneven small size */
+  }
+
+  .prompt-btn {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+  }
+
+  .prompt-input {
+    min-height: 120px;
+  }
+
+  .generate-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
+@media (max-width: 576px) {
+  .header {
+    flex-direction: column;
+    gap: px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 1.3rem;
+  }
+
+  .logo i {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    margin-top: 15px;
+    width: 95%;
+  }
+
+  .prompt-input {
+    font-size: 0.95rem;
+  }
+
+  .custom-select {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .generate-btn {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .img-download-btn {
+    bottom: 6px;
+    right: 6px;
+    padding: 8px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .prompt-input {
+    font-size: 1.1rem;
+  }
+
+  .generate-btn {
+    font-size: 1.1rem;
+    padding: 16px 28px;
+  }
+}
+
 
 .img-box {
   position: relative;
