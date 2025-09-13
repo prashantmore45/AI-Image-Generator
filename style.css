@@ -97,7 +97,7 @@ body.dark-theme .img-box:hover {
 }
 
 body.dark-theme .img-layout {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 188, 212, 0.25);
 }
 
 body.dark-theme .status-container {
@@ -116,6 +116,15 @@ body.dark-theme .img-box.loading .status-container p {
 body.dark-theme .img-box.error .status-container {
   background: rgba(183, 28, 28, 0.9);
   color: #ffcdd2;
+}
+
+body.dark-theme .spinner {
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #4fc3f7; /* lighter sky-blue */
+}
+
+body, input, textarea, select, button, .img-box, .status-container {
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -362,6 +371,10 @@ h1, h2, h3 {
   .container {
     margin-top: 15px;
     width: 95%;
+  }
+
+  .prompt-actions {
+    gap: 8px;
   }
 
   .prompt-input {
