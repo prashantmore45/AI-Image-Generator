@@ -72,7 +72,7 @@ const updateImageBox = (imgIndex, imgUrl) => {
 
 // Send requests to Hugging Face API to create images
 const generateImages = async (selectModel, imageCount, aspectRatio, promptText) => {
-    const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectModel}`;
+    const MODEL_URL = `https://api-inference.huggingface.co/models/${selectModel}`;
     const {width, height} = getImageDimensions(aspectRatio);
     generateBtn.setAttribute("disabled", "true");
 
