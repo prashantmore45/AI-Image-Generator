@@ -8,7 +8,7 @@ const countSelect = document.getElementById("count-select");
 const ratioSelect = document.getElementById("ratio-select");
 const gridGallery = document.querySelector(".gallery-grid");
 
-const BACKEND_URL = "http://localhost:5000/generate-image";
+const BACKEND_URL = "/generate-image";
 
 const examplePrompts = [
     "A futuristic cyberpunk city glowing in neon lights with flying cars in the sky, cinematic view",
