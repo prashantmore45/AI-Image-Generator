@@ -1,18 +1,13 @@
 {
   "version": 2,
   "builds": [
- 
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
+    }
   ],
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/public/index.html"
-    },
-
-    {
-      "source": "/(.*)",
-      "destination": "/public/$1" 
-    },
+  
     {
       "source": "/generate-image",
       "destination": "/backend/server.js"
