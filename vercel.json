@@ -7,7 +7,17 @@
     }
   ],
   "rewrites": [
-  
+    
+    {
+      "source": "/",
+      "destination": "/public/index.html"
+    },
+   
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
+    },
+    
     {
       "source": "/generate-image",
       "destination": "/backend/server.js"
