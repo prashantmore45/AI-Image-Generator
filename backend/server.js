@@ -22,7 +22,17 @@ if (!HF_API_KEY) {
 const Hf = new HfInference(HF_API_KEY); 
 
 // --- Middleware Setup ---
-app.use(cors()); 
+app.use(cors({
+    origin: [
+        "https://ai-image-generator-tan-five.vercel.app",  // your frontend domain
+        "http://localhost:3000"
+    ],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+}));
+
+app.options("*", cors());
+ 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
