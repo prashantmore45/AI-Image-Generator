@@ -31,7 +31,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type"],
 }));
 
-app.options("*", cors());
+app.options("/generate-image", cors());
  
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
