@@ -220,7 +220,7 @@ body {
   margin-top: 2rem;
   display: grid;
   /* Auto-responsive grid: No media queries needed */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -230,7 +230,10 @@ body {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 6px 14px var(--shadow);
-  aspect-ratio: 1/1; /* Keeps images square-ish */
+  max-width: 550px; 
+  width: 100%;
+  margin: 0 auto;
+  min-height: 300px;
   transition: transform 0.25s;
 }
 
@@ -240,7 +243,7 @@ body {
 
 .result-img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
 }
@@ -270,6 +273,14 @@ body {
   position: absolute;
   bottom: 15px;
   right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.img-download-btn:hover {
+  transform: scale(1.1);
 }
 
 /* 7. LOADING & STATUS */
@@ -290,6 +301,26 @@ body {
   display: flex;
 }
 
+/* 1. Hide everything inside status-container by default */
+.status-container .spinner,
+.status-container .fa-triangle-exclamation,
+.status-container p {
+  display: none;
+}
+
+/* 2. If Loading: Show Spinner + Text */
+.img-box.loading .spinner,
+.img-box.loading p {
+  display: block;
+}
+
+/* 3. If Error: Show Warning Icon + Text */
+.img-box.error .fa-triangle-exclamation,
+.img-box.error p {
+  display: block;
+  color: #d32f2f; /* Red color for error */
+}
+
 .spinner {
   width: 40px;
   height: 40px;
@@ -299,11 +330,67 @@ body {
   animation: spin 1s linear infinite;
 }
 
+.fa-triangle-exclamation {
+  font-size: 2rem; /* Make warning icon visible */
+}
+
+/* 9. FOOTER STYLES */
+.footer {
+  margin-top: 40px;
+  padding: 15px 25px;
+  background: var(--surface-header); /* Matches the header glass effect */
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Stacks on mobile */
+  gap: 15px;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.footer-content p i {
+  color: #ff6b6b; /* Red heart color */
+  animation: heartbeat 1.5s infinite;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  color: var(--text-sub);
+  font-size: 1.3rem;
+  transition: transform 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: var(--primary); /* Uses your primary pink color */
+  transform: translateY(-3px);
+}
+
 @keyframes spin { 100% { transform: rotate(360deg); } }
+
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
 }
 
 /* 8. SIMPLIFIED MEDIA QUERIES
@@ -331,5 +418,10 @@ body {
   
   .prompt-from {
     padding: 15px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
   }
 }
