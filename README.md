@@ -1,180 +1,93 @@
-📸 AI Image Generator — Full-Stack Web App
+# 📸 AI Image Generator (Production Ready)
 
-- An advanced full-stack AI Image Generator built with:
+![HuggingFace Badge](https://img.shields.io/badge/AI-Hugging%20Face-yellow?style=for-the-badge&logo=huggingface)
+![NodeJS Badge](https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge&logo=nodedotjs)
+![Status Badge](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
 
-> Frontend: HTML, CSS, JavaScript (Vercel Hosted)
+A fully functional, mobile-responsive AI Image Generator that transforms text prompts into high-quality visual art. Built with **Node.js** and the **Hugging Face Inference API**, it features secure backend proxying, dynamic aspect ratio calculation, and a professional, responsive interface.
 
-> Backend: Node.js (Express) using HuggingFace Inference API (Render Hosted)
+## 🌟 Key Features
 
-- Users can generate high-quality AI images by entering text prompts, selecting models, adjusting aspect ratios, and choosing image count.
-- Features include dark/light themes, random prompts, loading animations, error handling, and image downloads.
+* **🎨 Advanced AI Engines:** Powered by **Hugging Face Inference API** (Stable Diffusion & other state-of-the-art models).
+* **⚡ Secure Full-Stack Architecture:** Frontend (Vercel) communicates securely with a Backend (Render) to keep API keys protected.
+* **📐 Smart Customization:** Dynamically calculates pixel dimensions for **Square**, **Portrait**, and **Landscape** aspect ratios.
+* **🎲 Creative Tools:** Includes a "Smart Randomizer" for one-click prompt inspiration and batch generation (1-4 images).
+* **🌓 Professional UI:**
+    * **Dark/Light Mode:** Automatic system detection with a manual toggle switch.
+    * **Fully Responsive:** Optimized grids for Desktop (4-col), Tablet (2-col), and Mobile (1-col).
+    * **Instant Feedback:** Loading spinners and error handling for API timeouts.
+* **💾 Native Downloads:** Direct binary buffer handling allows users to download generated art instantly.
 
-🚀 Features
+---
 
-🎨 AI Image Generation
-- Uses HuggingFace Inference API (@huggingface/inference) for real image generation based on text prompts.
+## 🛠️ Tech Stack
 
-⚙ Full-Stack Architecture
+### Frontend
+* **HTML5 / CSS3:** Custom CSS variables for theming and responsive Grid layouts.
+* **Vanilla JavaScript:** Lightweight, dependency-free logic for API calls and DOM manipulation.
+* **Hosting:** Vercel (CI/CD).
 
-- Frontend deployed on Vercel
-- Backend API deployed on Render
-- Secure communication via CORS
-- .env protected API key
+### Backend
+* **Node.js & Express:** REST API endpoint and binary data streaming.
+* **Hugging Face SDK:** `@huggingface/inference` for model interaction.
+* **Security:** CORS protection and Environment Variable management.
+* **Hosting:** Render.
 
-🌓 Dark / Light Theme
-- Automatic theme detection + toggle button.
+---
 
-🔀 Smart Random Prompts
-- One-click prompt generation.
+## 🚀 Getting Started
 
-💾 Download Images
-- Each generated image can be downloaded.
+### Prerequisites
+* Node.js (v18 or higher recommended)
+* A Hugging Face Access Token (Get it from [Hugging Face Settings](https://huggingface.co/settings/tokens))
 
-⏳ Loading State + Error Handling
-- Spinner + clear error messages if model fails or API is busy.
+### Installation
 
-📱 Fully Responsive
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/your-username/AI-Image-Generator.git](https://github.com/your-username/AI-Image-Generator.git)
+    cd AI-Image-Generator
+    ```
 
-> Optimized layout for:
+2.  **Install Dependencies**
+    Navigate to the backend folder and install required packages:
+    ```bash
+    cd backend
+    npm install
+    ```
 
-- Desktop (4-column grid)
-- Tablet (2-column)
-- Mobile (1-column)
+3.  **Configure Environment**
+    Create a `.env` file in the `backend` directory:
+    ```env
+    PORT=3000
+    HUGGING_FACE_API_KEY=hf_your_actual_token_here
+    ```
 
-🏗️ Project Architecture
+4.  **Run the Server**
+    ```bash
+    node server.js
+    ```
 
+5.  **Launch**
+    Open `public/index.html` in your browser (or use VS Code Live Server).
+    *(The backend runs on localhost:3000, frontend connects via fetch).*
+
+---
+
+## 📂 Project Structure
+
+```text
 AI-Image-Generator/
+├── public/                 # Frontend Assets
+│   ├── index.html          # Main UI Structure
+│   ├── style.css           # Responsive Grid & Dark/Light Theme
+│   └── script.js           # Logic (Fetch API, UI State, Downloads)
 │
-├── public/               # Frontend (deployed on Vercel)
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
+├── backend/                # Server Side
+│   ├── node_modules/       # Dependencies
+│   ├── server.js           # Express Server & Image Buffer Logic
+│   ├── package.json        # Project Manifest
+│   └── .env                # API Keys (Not shared in repo)
 │
-├── backend/              # Backend API (deployed on Render)
-│   ├── server.js
-│   ├── package.json
-│   ├── package-lock.json
-│   └── .env  (ignored in Git)
-│
-├── vercel.json           # Vercel routing configuration
-└── README.md             # Documentation
-
-
-🔌 Backend API (Node + Express)
-
-> Endpoint
-POST /generate-image
-
-* Features:
-
-- CORS configured for secure frontend-only access
-- Uses HuggingFace text-to-image models
-- Dynamically computes pixel dimensions from aspect ratio
-- Returns raw image buffer directly
-- Works with multiple model IDs
-
-* Tech:
-
-- Node.js
-- Express.js
-- Hugging Face SDK
-- Render Deployment
-- CORS Protection
-- Environment Variables (.env)
-
-🌐 Deployment URLs
-
-Frontend (Vercel):
-➤ [your-frontend-url.vercel.app](https://ai-image-generator-tan-five.vercel.app/)
-
-Backend (Render):
-➤ [your-backend-url.onrender.com](https://ai-image-generator-8hof.onrender.com)
-
-🎮 How to Use
-
-- Enter a creative prompt (example: "A neon cyberpunk city at night")
-
-* Pick:
-
-1. Model
-2. Image count
-3. Aspect ratio
-4. Click Generate
-
-- Watch the spinner → Images appear
-
-> Download any image
-
-Or click 🎲 to get a random example prompt
-
-📱 Responsive Design
-
-> Device	Layout:
-
-- Desktop	4 images per row
-- Tablet	2 images per row
-- Mobile	1 image per row
-
-📸 Screenshots
-(Add screenshots here)
-
-> Light Theme
-
-> Dark Theme
-
-> Image Generation Demo
-
-
-🔒 Environment Variables
-
-> Backend requires:
-
-- HUGGING_FACE_API_KEY=hf_xxxxxxxxxxxxxxxxxxxxxxx
-
-- Never commit your API key — it stays only on Render dashboard.
-
-🛠️ Installation (Local Development)
-
-1️⃣ Clone the repo
-- git clone https://github.com/yourusername/AI-Image-Generator.git
-
-2️⃣ Install backend dependencies
-- cd backend
-- npm install
-
-3️⃣ Add your .env file
-- HUGGING_FACE_API_KEY=your_api_key_here
-
-4️⃣ Start backend
-- node server.js
-
-5️⃣ Open frontend
-
-> Simply open:
-public/index.html
-
-🏆 Acknowledgements
-
-🤗 Hugging Face – Image generation models
-
-🎨 Font Awesome – Icons
-
-🔤 Google Fonts
-
-⚡ Vercel – Frontend hosting
-
-🚀 Render – Backend hosting
-
-🔮 Future Enhancements
-
-🔐 User accounts + credits
-
-🖼️ Generation history
-
-📤 Social media sharing
-
-🚀 Support for more models (SDXL, Flux, Kandinsky, etc.)
-
-👁️ Real-time image preview
-
-🎞️ Image-to-image + inpainting support
+├── vercel.json             # Vercel Configuration
+└── README.md               # Documentation
