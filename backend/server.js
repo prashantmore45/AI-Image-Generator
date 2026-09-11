@@ -7,7 +7,7 @@ require('dotenv').config();
 const { HfInference } = require('@huggingface/inference');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5005;
 
 // 1. DEFINE the API Key by reading from environment variables first.
 const HF_API_KEY = process.env.HUGGING_FACE_API_KEY;
@@ -25,7 +25,9 @@ const Hf = new HfInference(HF_API_KEY);
 app.use(cors({
     origin: [
         "https://ai-image-generator-tan-five.vercel.app",  // your frontend domain
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
@@ -64,7 +66,8 @@ app.post('/generate-image', async (req, res) => {
     const { 
         selectModel, 
         aspectRatio, 
-        promptText 
+        promptText,
+        negativePrompt
     } = req.body; 
     
     if (!selectModel || !promptText || !aspectRatio) {
@@ -80,7 +83,8 @@ app.post('/generate-image', async (req, res) => {
             inputs: promptText, // The prompt text
             parameters: { 
                 width: width, 
-                height: height 
+                height: height,
+                negative_prompt: negativePrompt || undefined
             },
             options: {
                 wait_for_model: true // Wait for model to load if it's currently idle

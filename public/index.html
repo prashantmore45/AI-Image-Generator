@@ -23,12 +23,22 @@
         </header>
 
         <div class="main-content">
-            <form action="#" class="prompt-from">
+            <form action="#" class="prompt-form">
                 <div class="prompt-container">
                     <textarea class="prompt-input" placeholder="Describe your imagination in detail..." required autofocus></textarea>
-                    <button type="button" class="prompt-btn">
+                    <button type="button" class="prompt-btn" title="Random Prompt">
                         <i class="fa-solid fa-dice"></i>
                     </button>
+                </div>
+
+                <div class="advanced-settings">
+                    <details>
+                        <summary>Advanced Settings <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i></summary>
+                        <div class="setting-item">
+                            <label for="negative-prompt">Negative Prompt (Optional):</label>
+                            <input type="text" id="negative-prompt" class="prompt-input" placeholder="What to exclude (e.g., ugly, blurry, text, watermark)">
+                        </div>
+                    </details>
                 </div>
                 <div class="prompt-actions">
                     <div class="select-wrapper">

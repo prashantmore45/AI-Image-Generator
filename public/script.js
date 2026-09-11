@@ -1,5 +1,5 @@
 const themeToggle = document.querySelector(".theme-Toggle");
-promptForm = document.querySelector(".prompt-from");
+const promptForm = document.querySelector(".prompt-form");
 const promptInput = document.querySelector(".prompt-input");
 const promptBtn = document.querySelector(".prompt-btn");
 const generateBtn = document.querySelector(".generate-btn");
@@ -8,7 +8,9 @@ const countSelect = document.getElementById("count-select");
 const ratioSelect = document.getElementById("ratio-select");
 const gridGallery = document.querySelector(".gallery-grid");
 
-const BACKEND_URL = "https://ai-image-generator-8hof.onrender.com/generate-image";
+const BACKEND_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" 
+    ? "http://localhost:5005/generate-image" 
+    : "https://ai-image-generator-8hof.onrender.com/generate-image";
 
 const examplePrompts = [
     "A futuristic cyberpunk city glowing in neon lights with flying cars in the sky, cinematic view",
@@ -114,7 +116,7 @@ const updateImageBox = (imgIndex, imgUrl) => {
 // };
 
 // Send requests to your Node.js Backend to create images
-const generateImages = async (selectModel, imageCount, aspectRatio, promptText) => {
+const generateImages = async (selectModel, imageCount, aspectRatio, promptText, negativePrompt) => {
     // The dimension calculation logic is now handled in the backend
     generateBtn.setAttribute("disabled", "true");
 
@@ -135,6 +137,7 @@ const generateImages = async (selectModel, imageCount, aspectRatio, promptText) 
                     promptText: promptText,
                     selectModel: selectModel,
                     aspectRatio: aspectRatio,
+                    negativePrompt: negativePrompt,
                 }),
             });
 
@@ -165,7 +168,7 @@ const generateImages = async (selectModel, imageCount, aspectRatio, promptText) 
     generateBtn.removeAttribute("disabled");
 };
 
-const createImageBoxes = (selectModel, imageCount, aspectRatio, promptText) => {
+const createImageBoxes = (selectModel, imageCount, aspectRatio, promptText, negativePrompt) => {
     gridGallery.innerHTML = "";
 
     for (let i = 0; i < imageCount; i++) {
@@ -179,7 +182,7 @@ const createImageBoxes = (selectModel, imageCount, aspectRatio, promptText) => {
         </div>`;
     }
 
-    generateImages(selectModel, imageCount, aspectRatio, promptText);
+    generateImages(selectModel, imageCount, aspectRatio, promptText, negativePrompt);
 }
 
 //Handle form submision
@@ -187,12 +190,14 @@ const handleFormSubmit = (e) => {
     e.preventDefault();
 
     //Get form values
-    selectModel = modelSelect.value;
-    imageCount = parseInt(countSelect.value) || 1;
-    aspectRatio = ratioSelect.value || "1/1";
+    const selectModel = modelSelect.value;
+    const imageCount = parseInt(countSelect.value) || 1;
+    const aspectRatio = ratioSelect.value || "1/1";
     const promptText = promptInput.value.trim();
+    const negativePromptInput = document.getElementById("negative-prompt");
+    const negativePrompt = negativePromptInput ? negativePromptInput.value.trim() : "";
 
-    createImageBoxes(selectModel, imageCount, aspectRatio, promptText);
+    createImageBoxes(selectModel, imageCount, aspectRatio, promptText, negativePrompt);
 };
 
 //  Fill prompt input with random example
